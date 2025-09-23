@@ -1,4 +1,5 @@
 PROGRAM=getline
+EXTRA=
 
 CC=cc
 FLAGS=-Wall -Wextra -Werror -g
@@ -12,10 +13,12 @@ $(PROGRAM): $(OBJS)
 	$(CC) $^ -o $@
 
 %.o: %.c $(HEADERS)
-	$(CC) $(FLAGS) -c $< -o $@ -I includes
+	$(CC) $(FLAGS) -c $< -o $@ -I includes $(EXTRA)
 
 clean:
 	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(PROGRAM)
+
+re: fclean all

@@ -6,8 +6,16 @@
 # include <string.h>
 # include <errno.h>
 
+
+# if BUF_SIZE == 0
+#  undef BUF_SIZE
+# endif
+
+# ifndef BUF_SIZE
+#  define BUF_SIZE	1024
+# endif
+
 # define STDERR		2
-# define BUF_SIZE	1024
 
 int	ft_strlen(char *str);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
