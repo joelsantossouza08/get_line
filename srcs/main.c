@@ -52,6 +52,7 @@
 int	main(int argc, char **argv)
 {
 	FILE	*file;
+	int		fd;
 	char	*line;
 	size_t	size;
 
@@ -60,11 +61,24 @@ int	main(int argc, char **argv)
 	file = fopen(argv[1], "r");
 	if (!file)
 		return (2);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		return (2);
+	printf("--- Original ---\n");
 	line = 0;
-	while (getline(&line, &size, file))
+	while (getline(&line, &size, file) > 0)
 	{
 		printf("size:\t%ld\t%s", size, line);
 		line = ft_realloc(line, 0);
 	}
+	printf("--- My Own ---\n");
+	line = 0;
+	while (get_line(&line, &size, fd) > 0)
+	{
+		printf("size:\t%ld\t%s\n", size, line);
+		line = ft_realloc(line, 0);
+	}
+	fclose(file);
+	close(fd);
 	return (0);
 }
