@@ -32,19 +32,39 @@
 //	return (0);
 //}
 
+//int	main(int argc, char **argv)
+//{
+//	int	file;
+//	char	*line;
+//	size_t	size;
+//
+//	if (argc != 2)
+//		return (1);
+//	file = open(argv[1], O_RDONLY);
+//	if (file < 0)
+//		return (2);
+//	line = 0;
+//	printf("return:\t\t%lu\n", get_line(&line, &size, file));
+//	printf("line:  \t\t%s\n", line);
+//	return (0);
+//}
+
 int	main(int argc, char **argv)
 {
-	int	file;
+	FILE	*file;
 	char	*line;
 	size_t	size;
 
 	if (argc != 2)
 		return (1);
-	file = open(argv[1], O_RDONLY);
-	if (file < 0)
+	file = fopen(argv[1], "r");
+	if (!file)
 		return (2);
 	line = 0;
-	printf("return:\t\t%lu\n", get_line(&line, &size, file));
-	printf("line:  \t\t%s\n", line);
+	while (getline(&line, &size, file))
+	{
+		printf("size:\t%ld\t%s", size, line);
+		line = ft_realloc(line, 0);
+	}
 	return (0);
 }
