@@ -2,7 +2,7 @@ PROGRAM=getline
 
 CC=cc
 FLAGS=-Wall -Wextra -Werror -g
-SRCS=srcs/main.c srcs/utils.c srcs/get_line.c
+SRCS=tests/main.c srcs/utils.c srcs/get_line.c
 OBJS=$(SRCS:.c=.o)
 HEADERS=includes/get_line.h
 

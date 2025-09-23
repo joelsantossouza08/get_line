@@ -18,11 +18,11 @@ static int	is_end_of_line(int fd, char buf[BUF_SIZE + 1], int i)
 	return (buf[i] == '\n' || buf[i] == 0);
 }
 
-size_t	get_line(char **lineptr, size_t *n, int fd)
+ssize_t	get_line(char **lineptr, size_t *n, int fd)
 {
 	static char	buf[BUF_SIZE + 1];
 	static int	i;
-	int			len;
+	int		len;
 
 	if (!lineptr || !n || fd < 0)
 		return (-1);
