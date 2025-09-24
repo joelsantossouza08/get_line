@@ -112,7 +112,7 @@ int	main(int argc, char **argv)
 	while (get_line(&line, &size, fd) > 0)
 	{
 		printf("size:\t%ld\t%s\n", size, line);
-		line = ft_realloc(line, 0);
+		line = realloc(line, 0);
 		i++;
 	}
 	fclose(file);

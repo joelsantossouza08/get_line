@@ -33,7 +33,7 @@ ssize_t	get_line(char **lineptr, size_t *n, int fd)
 		start = ptr;
 		while (*ptr && *ptr != '\n')
 			ptr++;
-		*lineptr = ft_realloc(*lineptr, *n + (ptr - start) + 1);
+		*lineptr = realloc(*lineptr, *n + (ptr - start) + 1);
 		if (!*lineptr)
 			return (-1);
 		ft_strlcpy(*lineptr + *n, start, ptr - start + 1);
