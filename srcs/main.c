@@ -49,40 +49,6 @@
 //	return (0);
 //}
 
-int	main(int argc, char **argv)
-{
-	FILE	*file;
-	int		fd;
-	char	*line;
-	size_t	size;
-
-	if (argc != 2)
-		return (1);
-	file = fopen(argv[1], "r");
-	if (!file)
-		return (2);
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		return (2);
-	printf("--- Original ---\n");
-	line = 0;
-	while (getline(&line, &size, file) > 0)
-	{
-		printf("size:\t%ld\t%s", size, line);
-		line = ft_realloc(line, 0);
-	}
-	printf("--- My Own ---\n");
-	line = 0;
-	while (get_line(&line, &size, fd) > 0)
-	{
-		printf("size:\t%ld\t%s\n", size, line);
-		line = ft_realloc(line, 0);
-	}
-	fclose(file);
-	close(fd);
-	return (0);
-}
-
 //int	main(int argc, char **argv)
 //{
 //	FILE	*file;
@@ -99,14 +65,14 @@ int	main(int argc, char **argv)
 //	if (fd < 0)
 //		return (2);
 //	printf("--- Original ---\n");
-//	line = strdup("this is a test");
+//	line = 0;
 //	while (getline(&line, &size, file) > 0)
 //	{
 //		printf("size:\t%ld\t%s", size, line);
 //		line = ft_realloc(line, 0);
 //	}
 //	printf("--- My Own ---\n");
-//	line = strdup("this is a test");
+//	line = 0;
 //	while (get_line(&line, &size, fd) > 0)
 //	{
 //		printf("size:\t%ld\t%s\n", size, line);
@@ -116,3 +82,40 @@ int	main(int argc, char **argv)
 //	close(fd);
 //	return (0);
 //}
+
+int	main(int argc, char **argv)
+{
+	FILE	*file;
+	int		fd;
+	char	*line;
+	size_t	size;
+	int		i;
+
+	if (argc != 2)
+		return (1);
+	file = fopen(argv[1], "r");
+	if (!file)
+		return (2);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		return (2);
+	//printf("--- Original ---\n");
+	//line = strdup("this is a test");
+	//while (getline(&line, &size, file) > 0)
+	//{
+	//	printf("size:\t%ld\t%s", size, line);
+	//	line = ft_realloc(line, 0);
+	//}
+	printf("--- My Own ---\n");
+	line = strdup("this is a test");
+	i = 0;
+	while (get_line(&line, &size, fd) > 0)
+	{
+		printf("size:\t%ld\t%s\n", size, line);
+		line = ft_realloc(line, 0);
+		i++;
+	}
+	fclose(file);
+	close(fd);
+	return (0);
+}

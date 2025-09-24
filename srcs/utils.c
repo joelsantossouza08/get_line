@@ -68,7 +68,7 @@ void	*ft_memcpy(void *dest, void *src, size_t size)
 	return (dest);
 }
 
-int	get_block_size(void *ptr)
+ssize_t	get_block_size(void *ptr)
 {
 	size_t	*block_ptr;
 	
@@ -81,7 +81,7 @@ int	get_block_size(void *ptr)
 void	*ft_realloc(void *ptr, size_t bytes)
 {
 	void	*new;
-	int	block_size;
+	ssize_t	block_size;
 
 	block_size = get_block_size(ptr);
 	if (block_size < 0)
