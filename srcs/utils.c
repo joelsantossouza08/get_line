@@ -24,6 +24,21 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	return (dest);
 }
 
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+{
+	unsigned int	i;
+	
+	if (!dest || !src)
+		return (0);
+	i = 0;
+	while (src[i] && size-- > 1)
+		*dest++ = src[i++];
+	*dest = 0;
+	while (src[i])
+		i++;
+	return (i);
+}
+
 size_t	ft_putchar_fd(char c, int fd)
 {
 	return (write(fd, &c, 1));

@@ -17,10 +17,11 @@
 
 # define STDERR		2
 
-int	ft_strlen(char *str);
-char	*ft_strncpy(char *dest, char *src, unsigned int n);
-size_t	ft_putstr_fd(char *str, int fd);
-void	*ft_realloc(void *ptr, size_t bytes);
-ssize_t	get_line(char **lineptr, size_t *n, int fd);
+int				ft_strlen(char *str);
+char			*ft_strncpy(char *dest, char *src, unsigned int n);
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+size_t			ft_putstr_fd(char *str, int fd);
+void			*ft_realloc(void *ptr, size_t bytes);
+ssize_t			get_line(char **lineptr, size_t *n, int fd);
 
 #endif
