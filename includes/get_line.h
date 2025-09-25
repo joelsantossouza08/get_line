@@ -12,7 +12,7 @@
 # endif
 
 # ifndef BUF_SIZE
-#  define BUF_SIZE	1024
+#  define BUF_SIZE	4026
 # endif
 
 # define STDERR		2
